@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ConsoleApp1/ConsoleApp1.csproj" />
+  <Project Path="TelegramHelperLibrary/TelegramHelperLibrary.csproj" />
+  <Project Path="TestTelegramBot/TestTelegramBot.csproj" />
+</Solution>
