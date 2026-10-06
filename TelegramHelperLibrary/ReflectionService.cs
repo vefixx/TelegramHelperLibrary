@@ -5,7 +5,7 @@ namespace TelegramHelperLibrary;
 
 public class ReflectionService
 {
-    private static readonly Assembly s_assembly = Assembly.GetEntryAssembly();
+    private static readonly Assembly s_assembly = Assembly.GetEntryAssembly()!;
     private readonly ReflectionStorage _reflectionStorage;
 
     public ReflectionService(ReflectionStorage reflectionStorage)
@@ -32,7 +32,7 @@ public class ReflectionService
         foreach (MethodInfo methodInfo in slashCommandHandlerMethods)
         {
             var attribute =
-                methodInfo.GetCustomAttribute<SlashCommandHandlerAttribute>();
+                methodInfo.GetCustomAttribute<SlashCommandHandlerAttribute>()!;
 
             _reflectionStorage.AddToSlashCommandHandlersStorage(attribute.Command, methodInfo);
         }
@@ -52,9 +52,9 @@ public class ReflectionService
         foreach (MethodInfo methodInfo in messageHandlerMethods)
         {
             var attribute =
-                methodInfo.GetCustomAttribute<MessageHandlerAttribute>();
+                methodInfo.GetCustomAttribute<MessageHandlerAttribute>()!;
 
-            // TODO: Создать в классе хранилища метод, который кеширует обработчики сообщений
+            _reflectionStorage.AddToMessageHandlersStorage(attribute.Content, methodInfo);
         }
     }
 }
